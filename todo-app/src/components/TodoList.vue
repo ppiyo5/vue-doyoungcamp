@@ -1,0 +1,76 @@
+<template>
+  <section>
+    <transition-group name="list" tag="ul">
+      <li class="shadow" :key="1">
+        <i aria-hidden="true" class="checkBtn fas fa-check"></i>
+        샘플 데이터 1
+        <span
+          data-v-3de47834=""
+          type="button"
+          class="removeBtn"
+          @click="removeTodo(todoItem, index)"
+          ><i data-v-3de47834="" aria-hidden="true" class="far fa-trash-alt"></i
+        ></span>
+      </li>
+      <li class="shadow" :key="2">
+        <i aria-hidden="true" class="checkBtn fas fa-check"></i>
+        샘플 데이터 2
+        <span
+          type="button"
+          class="removeBtn"
+          @click="removeTodo(todoItem, index)"
+          ><i aria-hidden="true" class="far fa-trash-alt"></i
+        ></span>
+      </li>
+    </transition-group>
+  </section>
+</template>
+
+<script>
+export default {
+  methods: {
+    removeTodo(todoItem, index) {
+      todoItem;
+      index;
+    }
+  }
+};
+</script>
+
+<style scoped>
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 0;
+  text-align: left;
+}
+li {
+  display: flex;
+  min-height: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0.5rem 0;
+  padding: 0 0.9rem;
+  background: white;
+  border-radius: 5px;
+}
+.checkBtn {
+  line-height: 45px;
+  color: #62acde;
+  margin-right: 5px;
+}
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>
