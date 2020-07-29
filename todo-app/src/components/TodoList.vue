@@ -1,26 +1,16 @@
 <template>
   <section>
     <transition-group name="list" tag="ul">
-      <li class="shadow" :key="1">
-        <i aria-hidden="true" class="checkBtn fas fa-check"></i>
-        샘플 데이터 1
+      <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
+        <i class="checkBtn fas fa-check" aria-hidden="true"></i>
+        {{ todoItem }}
         <span
-          data-v-3de47834=""
-          type="button"
           class="removeBtn"
-          @click="removeTodo(todoItem, index)"
-          ><i data-v-3de47834="" aria-hidden="true" class="far fa-trash-alt"></i
-        ></span>
-      </li>
-      <li class="shadow" :key="2">
-        <i aria-hidden="true" class="checkBtn fas fa-check"></i>
-        샘플 데이터 2
-        <span
           type="button"
-          class="removeBtn"
           @click="removeTodo(todoItem, index)"
-          ><i aria-hidden="true" class="far fa-trash-alt"></i
-        ></span>
+        >
+          <i class="far fa-trash-alt" aria-hidden="true"></i>
+        </span>
       </li>
     </transition-group>
   </section>
@@ -28,10 +18,10 @@
 
 <script>
 export default {
+  props: ["propsdata"],
   methods: {
     removeTodo(todoItem, index) {
-      todoItem;
-      index;
+      this.$emit("removeTodo", todoItem, index);
     }
   }
 };

@@ -4,8 +4,9 @@
       type="text"
       v-model="newTodoItem"
       placeholder="Type what you have to do"
+      v-on:keyup.enter="addTodo"
     />
-    <span class="addContainer">
+    <span class="addContainer" v-on:click="addTodo">
       <i class="addBtn fas fa-plus" aria-hidden="true"></i>
     </span>
 
@@ -30,7 +31,18 @@ export default {
     };
   },
   methods: {
-    addTodo() {}
+    addTodo() {
+      if (this.newTodoItem !== "") {
+        var value = this.newTodoItem && this.newTodoItem.trim();
+        this.$emit("addTodo", value);
+        this.clearInput();
+      } else {
+        this.showModal = !this.showModal;
+      }
+    },
+    clearInput() {
+      this.newTodoItem = "";
+    }
   },
   components: {
     Modal: Modal
